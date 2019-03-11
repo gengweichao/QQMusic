@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.qfedu.pojo.User">
+    <id column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="userphone" jdbcType="VARCHAR" property="userphone" />
+    <result column="userpassword" jdbcType="VARCHAR" property="userpassword" />
+    <result column="useraddr" jdbcType="VARCHAR" property="useraddr" />
+    <result column="usersex" jdbcType="INTEGER" property="usersex" />
+    <result column="userbath" jdbcType="DATE" property="userbath" />
+    <result column="userimg" jdbcType="VARCHAR" property="userimg" />
+    <result column="usertatu" jdbcType="VARCHAR" property="usertatu" />
+    <result column="usercommon" jdbcType="VARCHAR" property="usercommon" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    userid, username, userphone, userpassword, useraddr, usersex, userbath, userimg, 
+    usertatu, usercommon
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where userid = #{userid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_user
+    where userid = #{userid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qfedu.pojo.User">
+    insert into t_user (userid, username, userphone, 
+      userpassword, useraddr, usersex, 
+      userbath, userimg, usertatu, 
+      usercommon)
+    values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{userphone,jdbcType=VARCHAR}, 
+      #{userpassword,jdbcType=VARCHAR}, #{useraddr,jdbcType=VARCHAR}, #{usersex,jdbcType=INTEGER}, 
+      #{userbath,jdbcType=DATE}, #{userimg,jdbcType=VARCHAR}, #{usertatu,jdbcType=VARCHAR}, 
+      #{usercommon,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qfedu.pojo.User">
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="userphone != null">
+        userphone,
+      </if>
+      <if test="userpassword != null">
+        userpassword,
+      </if>
+      <if test="useraddr != null">
+        useraddr,
+      </if>
+      <if test="usersex != null">
+        usersex,
+      </if>
+      <if test="userbath != null">
+        userbath,
+      </if>
+      <if test="userimg != null">
+        userimg,
+      </if>
+      <if test="usertatu != null">
+        usertatu,
+      </if>
+      <if test="usercommon != null">
+        usercommon,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userphone != null">
+        #{userphone,jdbcType=VARCHAR},
+      </if>
+      <if test="userpassword != null">
+        #{userpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="useraddr != null">
+        #{useraddr,jdbcType=VARCHAR},
+      </if>
+      <if test="usersex != null">
+        #{usersex,jdbcType=INTEGER},
+      </if>
+      <if test="userbath != null">
+        #{userbath,jdbcType=DATE},
+      </if>
+      <if test="userimg != null">
+        #{userimg,jdbcType=VARCHAR},
+      </if>
+      <if test="usertatu != null">
+        #{usertatu,jdbcType=VARCHAR},
+      </if>
+      <if test="usercommon != null">
+        #{usercommon,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qfedu.pojo.User">
+    update t_user
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userphone != null">
+        userphone = #{userphone,jdbcType=VARCHAR},
+      </if>
+      <if test="userpassword != null">
+        userpassword = #{userpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="useraddr != null">
+        useraddr = #{useraddr,jdbcType=VARCHAR},
+      </if>
+      <if test="usersex != null">
+        usersex = #{usersex,jdbcType=INTEGER},
+      </if>
+      <if test="userbath != null">
+        userbath = #{userbath,jdbcType=DATE},
+      </if>
+      <if test="userimg != null">
+        userimg = #{userimg,jdbcType=VARCHAR},
+      </if>
+      <if test="usertatu != null">
+        usertatu = #{usertatu,jdbcType=VARCHAR},
+      </if>
+      <if test="usercommon != null">
+        usercommon = #{usercommon,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userid = #{userid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qfedu.pojo.User">
+    update t_user
+    set username = #{username,jdbcType=VARCHAR},
+      userphone = #{userphone,jdbcType=VARCHAR},
+      userpassword = #{userpassword,jdbcType=VARCHAR},
+      useraddr = #{useraddr,jdbcType=VARCHAR},
+      usersex = #{usersex,jdbcType=INTEGER},
+      userbath = #{userbath,jdbcType=DATE},
+      userimg = #{userimg,jdbcType=VARCHAR},
+      usertatu = #{usertatu,jdbcType=VARCHAR},
+      usercommon = #{usercommon,jdbcType=VARCHAR}
+    where userid = #{userid,jdbcType=INTEGER}
+  </update>
+
+  <insert id="addUser1" parameterType="com.qfedu.pojo.User">
+    insert into t_user(username,userphone,userpassword,useraddr,usersex,userbath,userimg,usertatu,usercommon)
+    values(#{username},#{userphone},#{userpassword},#{useraddr},#{usersex},#{userbath},#{userimg},#{usertatu},#{usercommon})
+  </insert>
+</mapper>

@@ -7,10 +7,7 @@ import com.qfedu.util.ResultUtil;
 import com.qfedu.vo.ResultVo;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -27,7 +24,7 @@ public class LoginController {
     private UserMapper userDao;
 
     //登录操作
-    @GetMapping("login.do")
+    @RequestMapping("login.do")
     public ResultVo login(String name, String password, HttpServletRequest request){
 
         User user = userDao.selectByName(name);

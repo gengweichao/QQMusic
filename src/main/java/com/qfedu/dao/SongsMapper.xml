@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.dao.SongsMapper">
+  <resultMap id="BaseResultMap" type="com.qfedu.pojo.Songs">
+    <id column="songid" jdbcType="INTEGER" property="songid" />
+    <result column="songname" jdbcType="VARCHAR" property="songname" />
+    <result column="songimgurl" jdbcType="VARCHAR" property="songimgurl" />
+    <result column="songlrcurl" jdbcType="VARCHAR" property="songlrcurl" />
+    <result column="songurl" jdbcType="VARCHAR" property="songurl" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="singerid" jdbcType="INTEGER" property="singerid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    songid, songname, songimgurl, songlrcurl, songurl, time, singerid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_songs
+    where songid = #{songid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_songs
+    where songid = #{songid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qfedu.pojo.Songs">
+    insert into t_songs (songid, songname, songimgurl, 
+      songlrcurl, songurl, time, 
+      singerid)
+    values (#{songid,jdbcType=INTEGER}, #{songname,jdbcType=VARCHAR}, #{songimgurl,jdbcType=VARCHAR}, 
+      #{songlrcurl,jdbcType=VARCHAR}, #{songurl,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, 
+      #{singerid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qfedu.pojo.Songs">
+    insert into t_songs
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="songid != null">
+        songid,
+      </if>
+      <if test="songname != null">
+        songname,
+      </if>
+      <if test="songimgurl != null">
+        songimgurl,
+      </if>
+      <if test="songlrcurl != null">
+        songlrcurl,
+      </if>
+      <if test="songurl != null">
+        songurl,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="singerid != null">
+        singerid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="songid != null">
+        #{songid,jdbcType=INTEGER},
+      </if>
+      <if test="songname != null">
+        #{songname,jdbcType=VARCHAR},
+      </if>
+      <if test="songimgurl != null">
+        #{songimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="songlrcurl != null">
+        #{songlrcurl,jdbcType=VARCHAR},
+      </if>
+      <if test="songurl != null">
+        #{songurl,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="singerid != null">
+        #{singerid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qfedu.pojo.Songs">
+    update t_songs
+    <set>
+      <if test="songname != null">
+        songname = #{songname,jdbcType=VARCHAR},
+      </if>
+      <if test="songimgurl != null">
+        songimgurl = #{songimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="songlrcurl != null">
+        songlrcurl = #{songlrcurl,jdbcType=VARCHAR},
+      </if>
+      <if test="songurl != null">
+        songurl = #{songurl,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="singerid != null">
+        singerid = #{singerid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where songid = #{songid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qfedu.pojo.Songs">
+    update t_songs
+    set songname = #{songname,jdbcType=VARCHAR},
+      songimgurl = #{songimgurl,jdbcType=VARCHAR},
+      songlrcurl = #{songlrcurl,jdbcType=VARCHAR},
+      songurl = #{songurl,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      singerid = #{singerid,jdbcType=INTEGER}
+    where songid = #{songid,jdbcType=INTEGER}
+  </update>
+</mapper>

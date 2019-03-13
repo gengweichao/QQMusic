@@ -1,6 +1,9 @@
 package com.qfedu.dao;
 
 import com.qfedu.pojo.Singers;
+import com.qfedu.vo.SongsVO;
+
+import java.util.List;
 
 public interface SingersMapper {
     int deleteByPrimaryKey(Integer singid);
@@ -14,4 +17,7 @@ public interface SingersMapper {
     int updateByPrimaryKeySelective(Singers record);
 
     int updateByPrimaryKey(Singers record);
+
+    //查询所有歌手
+    List<Singers> queryAll();
 }

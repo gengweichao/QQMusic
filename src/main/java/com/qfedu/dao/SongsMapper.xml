@@ -114,4 +114,29 @@
       singerid = #{singerid,jdbcType=INTEGER}
     where songid = #{songid,jdbcType=INTEGER}
   </update>
+
+
+  <!---->
+  <select id="queryBySongsName" resultType="com.qfedu.pojo.Songs">
+       select * from t_songs where songname = #{songname}
+  </select>
+
+  <select id="queryAllSongs" resultMap="BaseResultMap">
+    select * from t_songs
+  </select>
+
+  <select id="queryBySonger" parameterType="java.lang.Integer" resultType="com.qfedu.vo.SongsVO">
+     select ts.songname Mname,ts.songimgurl Mimg,ts.songlrcurl Mcurl,ts.songurl Murl,ts.times time,t.singname Sname,t.singimg Simg from t_songs ts
+INNER JOIN t_singers t
+on ts.songid = t.singid
+where t.singid =#{songid}
+  </select>
+
+  <select id="queryBySongerName" parameterType="java.lang.String" resultType="com.qfedu.vo.SongsVO">
+     select ts.songname Mname,ts.songimgurl Mimg,ts.songlrcurl Mcurl,ts.songurl Murl,ts.times time,t.singname Sname,t.singimg Simg from t_songs ts
+INNER JOIN t_singers t
+on ts.songid = t.singid
+where t.singid =#{name}
+  </select>
+
 </mapper>

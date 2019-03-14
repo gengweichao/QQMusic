@@ -7,11 +7,11 @@
     <result column="songimgurl" jdbcType="VARCHAR" property="songimgurl" />
     <result column="songlrcurl" jdbcType="VARCHAR" property="songlrcurl" />
     <result column="songurl" jdbcType="VARCHAR" property="songurl" />
-    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="times" jdbcType="INTEGER" property="times" />
     <result column="singerid" jdbcType="INTEGER" property="singerid" />
   </resultMap>
   <sql id="Base_Column_List">
-    songid, songname, songimgurl, songlrcurl, songurl, time, singerid
+    songid, songname, songimgurl, songlrcurl, songurl, times, singerid
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -25,10 +25,10 @@
   </delete>
   <insert id="insert" parameterType="com.qfedu.pojo.Songs">
     insert into t_songs (songid, songname, songimgurl, 
-      songlrcurl, songurl, time, 
+      songlrcurl, songurl, times,
       singerid)
     values (#{songid,jdbcType=INTEGER}, #{songname,jdbcType=VARCHAR}, #{songimgurl,jdbcType=VARCHAR}, 
-      #{songlrcurl,jdbcType=VARCHAR}, #{songurl,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, 
+      #{songlrcurl,jdbcType=VARCHAR}, #{songurl,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP},
       #{singerid,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.qfedu.pojo.Songs">

@@ -1,6 +1,7 @@
 package com.qfedu.controller;
 
 import com.qfedu.service.SongsService;
+import com.qfedu.util.ResultUtil;
 import com.qfedu.vo.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,5 +38,11 @@ public class SongsController {
     @RequestMapping("queryBySongerName.do")
     public ResultVo queryByID(String name){
         return songsService.selectAllByName(name);
+    }
+
+     //增加点击量
+    @RequestMapping("updateTiems.do")
+    public ResultVo updateTimes(int sid){
+       return songsService.updateSongsTimes(sid);
     }
 }

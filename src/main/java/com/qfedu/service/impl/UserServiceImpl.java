@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
         User user = userDao.selectByName(name);
 
         if(user != null &&user.getUsertatu().equals("1") && user.getUserpassword().equalsIgnoreCase(password)){
-            return ResultUtil.exec(true,"登录成功",null);
+            return ResultUtil.exec(true,"登录成功",user.getUserid());
         } else {
             return ResultUtil.exec(false,"登录失败，请重新登录",null);
         }
@@ -33,12 +33,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResultVo addUser(User user) {
 
+
               User user1 = userDao.selectByName(user.getUserphone());
               if(user1 == null) {
                   userDao.addUser1(user);
                   return ResultUtil.exec(true,"注册成功",null);
               } else {
-                  return ResultUtil.exec(false,"用户名已存在",null);
+                  return ResultUtil.exec(false,"手机号已经注册",null);
               }
 
 

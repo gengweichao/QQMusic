@@ -1,5 +1,6 @@
 package com.qfedu.service;
 
+import com.qfedu.pojo.NetCollect;
 import com.qfedu.pojo.Songs;
 import com.qfedu.vo.ResultVo;
 
@@ -18,4 +19,13 @@ public interface SongsService {
     public ResultVo selectAllByName(String name);
     //增加点击量
     public ResultVo updateSongsTimes(int sid);
+
+    //添加收藏
+    public ResultVo addCollect(NetCollect collect);
+
+    //根据用户ID查找收藏的歌曲ID
+    public ResultVo selectAllSidByUid(int uid);
+
+    //删除歌曲收藏
+    public ResultVo delCollectBySidAndUid(NetCollect netCollect);
 }

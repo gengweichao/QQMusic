@@ -1,5 +1,6 @@
 package com.qfedu.service;
 
+import com.qfedu.pojo.Songs;
 import com.qfedu.vo.ResultVo;
 
 /**
@@ -15,4 +16,6 @@ public interface SongsService {
     public ResultVo selectAllById(int singid);
     //根据歌手ID查询所有的歌曲
     public ResultVo selectAllByName(String name);
+    //增加点击量
+    public ResultVo updateSongsTimes(int sid);
 }

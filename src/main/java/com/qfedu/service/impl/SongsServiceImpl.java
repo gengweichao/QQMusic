@@ -62,4 +62,12 @@ public class SongsServiceImpl implements SongsService {
             return ResultUtil.exec(false,"查询失败",null);
         }
     }
+
+    @Override
+    public ResultVo updateSongsTimes(int sid) {
+        Songs songs = songsMapper.selectByPrimaryKey(sid);
+        songs.getTime();
+
+        return null;
+    }
 }

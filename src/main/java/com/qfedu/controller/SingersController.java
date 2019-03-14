@@ -15,6 +15,7 @@ public class SingersController {
     @Autowired
     private SingersService singersService;
 
+    //查询所有的歌手信息
     @RequestMapping("queryAllsinger.do")
     public ResultVo queryAllsinger1(){
         return singersService.selectAll();

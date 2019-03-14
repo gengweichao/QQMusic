@@ -10,7 +10,7 @@ public class SongsVO {
     private String Mimg;
     private String Mcul;
     private String Murl;
-    private Integer time;
+    private Integer times;
     private String Sname;
     private String Simg;
 
@@ -46,12 +46,12 @@ public class SongsVO {
         Murl = murl;
     }
 
-    public Integer getTime() {
-        return time;
+    public Integer getTimes() {
+        return times;
     }
 
-    public void setTime(Integer time) {
-        this.time = time;
+    public void setTimes(Integer times) {
+        this.times = times;
     }
 
     public String getSname() {

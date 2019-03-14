@@ -17,7 +17,7 @@
     select 
     <include refid="Base_Column_List" />
     from t_songs
-    where songid = #{songid,jdbcType=INTEGER}
+    where songid = #{sid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_songs
@@ -126,7 +126,7 @@
   </select>
 
   <select id="queryBySonger" parameterType="java.lang.Integer" resultType="com.qfedu.vo.SongsVO">
-     select ts.songname Mname,ts.songimgurl Mimg,ts.songlrcurl Mcurl,ts.songurl Murl,ts.times time,t.singname Sname,t.singimg Simg from t_songs ts
+     select ts.songname Mname,ts.songimgurl Mimg,ts.songlrcurl Mcurl,ts.songurl Murl,ts.times times,t.singname Sname,t.singimg Simg from t_songs ts
 INNER JOIN t_singers t
 on ts.songid = t.singid
 where t.singid =#{songid}
@@ -136,7 +136,14 @@ where t.singid =#{songid}
      select ts.songname Mname,ts.songimgurl Mimg,ts.songlrcurl Mcurl,ts.songurl Murl,ts.times time,t.singname Sname,t.singimg Simg from t_songs ts
 INNER JOIN t_singers t
 on ts.songid = t.singid
-where t.singid =#{name}
+where t.singname =#{name}
   </select>
+
+  <select id="queryBusid" parameterType="java.lang.Integer" resultType="com.qfedu.pojo.Songs">
+    select * from t_songs where songid=#{sid}
+  </select>
+  <update id="updateTimes" parameterType="java.lang.Integer" >
+    update t_songs set times=#{times} where songid=#{sid}
+  </update>
 
 </mapper>

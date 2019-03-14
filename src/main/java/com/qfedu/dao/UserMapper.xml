@@ -153,6 +153,6 @@
 
   <insert id="addUser1" parameterType="com.qfedu.pojo.User">
     insert into t_user(username,userphone,userpassword,useraddr,usersex,userbath,userimg,usertatu,usercommon)
-    values(#{username},#{userphone},#{userpassword},#{useraddr},#{usersex},#{userbath},#{userimg},#{usertatu},#{usercommon})
+    values(#{username},#{userphone},#{userpassword},#{useraddr},#{usersex},#{userbath},#{userimg},"1",#{usercommon})
   </insert>
 </mapper>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.dao.NetCollectMapper">
+  <resultMap id="BaseResultMap" type="com.qfedu.pojo.NetCollect">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="sid" jdbcType="VARCHAR" property="sid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, uid, sid
+  </sql>
+
+  <select id="selectByUidAndSid" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_netcollect where uid=#{uid} and sid=#{sid}
+  </select>
+
+  <select id="selectAllByUid" parameterType="int" resultType="string">
+    select sid from t_netcollect where uid = #{uid}
+  </select>
+
+  <delete id="deleteByUidAndSid" parameterType="com.qfedu.pojo.NetCollect">
+    delete from t_netcollect where uid=#{uid} and sid=#{sid}
+  </delete>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_netcollect
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_netcollect
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qfedu.pojo.NetCollect">
+    insert into t_netcollect (id, uid, sid)
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{sid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qfedu.pojo.NetCollect">
+    insert into t_netcollect
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="sid != null">
+        sid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qfedu.pojo.NetCollect">
+    update t_netcollect
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        sid = #{sid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qfedu.pojo.NetCollect">
+    update t_netcollect
+    set uid = #{uid,jdbcType=INTEGER},
+      sid = #{sid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
